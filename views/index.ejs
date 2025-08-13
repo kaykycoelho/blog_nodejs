@@ -1,25 +1,25 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>blog</title>
-</head>
+<%- include('./parciais/head.ejs') %>
 <body>
-  <nav>
-     <div class="titulo-site">
-        <a href="/"><h1>blog</h1></a>
-        <p>site</p>
-     </div>
-     <ul>
-        <li><a href="/">blog</a></li>
-          <li><a href="/sobre">sobre</a></li>
-            <li><a href="/blog/criar">novo blog</a></li>
-     </ul>
-  </nav>
+     <!--inclusão de parcial nav-->
+      <%- include('./parciais/nav.ejs') %>
+
   <div class = "conteudo-blog">
     <h2>todo blog</h2>
+    <% if (blogs.length > 0) { %>
+    <% blogs.forEach(blog => { %>
 
+      <h3 class="titulo"><%= blog.titulo %></h3>
+      <p class="conteudo"><%= blog.conteudo %></p>
+      
+
+      <% }) %>
+      <% } else { %>
+        <p>A lista do blog está vazia </p>
+        <% } %>
   </div>
+  <%- include('./parciais/footer.ejs') %>
+
 </body>
 </html>
